@@ -107,9 +107,23 @@ export default function Map() {
       ],
     });
 
+    const data = list.map((el: any) => {
+      const content = `<div></div>`;
+      var customOverlay = new window.kakao.maps.CustomOverlay({
+        map: map,
+        position: new window.kakao.maps.LatLng(el.lat, el.lng),
+        content: content,
+        yAnchor: 1,
+        clickable: true,
+        zIndex: 1600,
+      });
+      customOverlay.setMap(map);
+      return customOverlay;
+    });
+
     /* 클러스터링 최소 하나 */
     cluster.current.setMinClusterSize(1);
-    cluster.current.addMarkers(list);
+    cluster.current.addMarkers(data);
   };
 
   useEffect(() => {

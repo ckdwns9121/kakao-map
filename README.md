@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# Kakao Map React + Typescript에서 자유롭게 활용하기
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## API KEY 발급 받기
 
-## Available Scripts
+[카카오맵 공식문서](https://apis.map.kakao.com/)
 
-In the project directory, you can run:
+## API KEY 추가하기
 
-### `yarn start`
+```html
+<script
+  type="text/javascript"
+  src="//dapi.kakao.com/v2/maps/sdk.js?appkey={발급받은 키}&libraries=services,clusterer,drawing"
+></script>
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 지도 불러오기
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```js
+import { useEffect } from 'react';
 
-### `yarn test`
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+export default function Map() {
+  useEffect(() => {
+    const container = document.getElementById('map');
+    const options = {
+      center: new window.kakao.maps.LatLng(33.450701, 126.570667),
+    };
+    const map = new window.kakao.maps.Map(container, options);
+  }, []);
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+  return (
+    <div id="map" style={{ width: '100%', height: '100vh', zIndex: 1 }}>
+    </div>
+  );
+}
+```

@@ -54,6 +54,8 @@ export default function Map() {
 
 카카오맵은 `id=map`인 element를 찾아 렌더링 한다. 그리고 인라인 스타일로 `width, height`값을 설정해준다.
 
+[결과](https://user-images.githubusercontent.com/40492343/161256565-664f57dd-88cf-4a30-b175-fc205d2823b8.png)
+
 ## global Interface 생성
 
 ```js
@@ -132,3 +134,5 @@ export default function Map() {
   );
 }
 ```
+
+[결과](https://user-images.githubusercontent.com/40492343/161256603-8c43ddd2-9070-4452-b499-fb7434ee2b36.jpg)

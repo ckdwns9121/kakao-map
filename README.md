@@ -58,7 +58,7 @@ export default function Map() {
 
 ## global Interface 생성
 
-```js
+```ts
 declare global {
   interface Window {
     kakao: any;

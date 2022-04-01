@@ -135,4 +135,6 @@ export default function Map() {
 }
 ```
 
-![결과](https://user-images.githubusercontent.com/40492343/161256603-8c43ddd2-9070-4452-b499-fb7434ee2b36.jpg)
+<span>
+<img src="https://user-images.githubusercontent.com/40492343/161256603-8c43ddd2-9070-4452-b499-fb7434ee2b36.jpg">
+</span>

@@ -148,3 +148,39 @@ export default function Map() {
 <span>
 <img src="https://user-images.githubusercontent.com/40492343/161256603-8c43ddd2-9070-4452-b499-fb7434ee2b36.jpg">
 </span>
+
+## 현재위치 추적하기
+
+자바스트립트에서 제공하고 있는 `navigator.geolocation API`를 사용하여 사용자의 위치를 추적한다.
+
+```js
+function getCoordinates() {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject, OPTIONS);
+  });
+}
+```
+
+geolocation API는 https에서만 적용하니 주의하자!
+
+## 지도의 중심좌표 바꾸기
+
+`lat` , `lng` 값을 받아와 지도의 중심좌표를 바꾸기
+
+```js
+const setCoordinates = (lat: number, lng: number) => {
+  const moveLatLon = new window.kakao.maps.LatLng(lat, lng);
+  map.setCenter(moveLatLon);
+);
+```
+
+## 지도의 레벨 바꾸기
+
+```ts
+type Zoom = 'in' | 'out';
+const levelChangeEvent = (zoom: Zoom) => {
+  let level = kakao_map.current.getLevel();
+  level = zoom === 'in' ? level - 1 : level + 1;
+  kakao_map.current.setLevel(level, { animate: { duration: 300 } });
+};
+```

@@ -70,8 +70,8 @@ declare global {
 
 ## 클러스터 생성
 
-```js
- import { useEffect , useRef } from 'react';
+```ts
+import { useEffect, useRef } from 'react';
 
 declare global {
   interface Window {
@@ -79,12 +79,10 @@ declare global {
   }
 }
 export default function Map() {
-
   const cluster = useRef<any>(null);
   const kakaoMap = useRef<any>(null);
 
-   const onCreateCluster = () => {
-
+  const onCreateCluster = () => {
     const map = kakaoMap.current;
 
     cluster.current = new window.kakao.maps.MarkerClusterer({
@@ -94,7 +92,6 @@ export default function Map() {
       disableClickZoom: true, // 클러스터 마커를 클릭했을 때 지도가 확대되지 않도록 설정한다
       styles: [
         {
-
           width: '40px',
           height: '40px',
           background: 'rgba(34, 34, 34, .8)',
@@ -121,16 +118,15 @@ export default function Map() {
       center: new window.kakao.maps.LatLng(33.450701, 126.570667),
     };
     const map = new window.kakao.maps.Map(container, options);
-    kakaoMap.current= map;
+    kakaoMap.current = map;
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     onCreateCluster();
-  },[])
+  }, []);
 
   return (
-    <div id="map" style={{ width: '100%', height: '100vh', zIndex: 1 }}>
-    </div>
+    <div id="map" style={{ width: '100%', height: '100vh', zIndex: 1 }}></div>
   );
 }
 ```
